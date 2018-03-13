@@ -1,5 +1,6 @@
 package i_introduction._4_Lambdas
 
+import com.google.common.collect.Iterables
 import util.TODO
 import util.doc4
 
@@ -22,4 +23,6 @@ fun todoTask4(collection: Collection<Int>): Nothing = TODO(
     documentation = doc4(),
     references = { JavaCode4().task4(collection) })
 
-fun task4(collection: Collection<Int>): Boolean = todoTask4(collection)
+fun task4(collection: Collection<Int>): Boolean {
+    return Iterables.any(collection, { element -> if (element != null) element % 2 == 0 else false })
+}

@@ -2,6 +2,9 @@ package i_introduction._12_Extensions_On_Collections
 
 import util.TODO
 import util.doc12
+import java.util.*
+import kotlin.Comparator
+import kotlin.collections.ArrayList
 
 fun todoTask12(): Nothing = TODO(
     """
@@ -17,7 +20,19 @@ fun todoTask12(): Nothing = TODO(
 )
 
 fun task12(): List<Int> {
-    todoTask12()
-    return arrayListOf(1, 5, 2)
+    return arrayListOf(1, 5, 2).sortedDescending()
 }
 
+fun <T : Comparable<T>> Iterable<T>.sortedDescending(): List<T> {
+    val result: ArrayList<T> = ArrayList()
+
+    for (element in this) {
+        result.add(element)
+    }
+
+    Collections.sort(result,  Comparator<T> { o1, o2 ->
+        return@Comparator o2.compareTo(o1)
+    })
+
+    return result
+}
